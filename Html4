@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Notas</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="lista_alunos.html">Lista de Alunos</a></li>
+                <li><a href="notas.html">Inserir Notas</a></li>
+                <li><a href="media_sala.html">Média da Sala</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Inserir Notas de Alunos</h1>
+        <form id="notasForm">
+            <label for="nomeAluno">Nome do Aluno:</label>
+            <input type="text" id="nomeAluno" required>
+
+            <label for="nota1">Nota 1:</label>
+            <input type="number" id="nota1" required>
+
+            <label for="nota2">Nota 2:</label>
+            <input type="number" id="nota2" required>
+
+            <label for="nota3">Nota 3:</label>
+            <input type="number" id="nota3" required>
+
+            <label for="nota4">Nota 4:</label>
+            <input type="number" id="nota4" required>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gestão de Alunos - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
