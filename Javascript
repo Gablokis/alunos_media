@@ -1,0 +1,100 @@
+
+function carregarXML() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "dados.xml", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            processarXML(xhr.responseXML);
+        }
+    };
+    xhr.send();
+}
+
+
+function processarXML(xml) {
+    const cursos = xml.getElementsByTagName("curso");
+    const listaAlunosDiv = document.getElementById("alunos-lista");
+    
+    listaAlunosDiv.innerHTML = ''; 
+    
+    for (let i = 0; i < cursos.length; i++) {
+        const cursoNome = cursos[i].getAttribute("nome");
+        const alunos = cursos[i].getElementsByTagName("aluno");
+
+
+        const cursoDiv = document.createElement("div");
+        const cursoHeader = document.createElement("h2");
+        cursoHeader.innerText = cursoNome;
+        cursoDiv.appendChild(cursoHeader);
+
+        const listaAlunos = document.createElement("ul");
+
+        for (let j = 0; j < alunos.length; j++) {
+            const alunoNome = alunos[j].getElementsByTagName("nome")[0].textContent;
+            const genero = alunos[j].getElementsByTagName("genero")[0].textContent;
+            const materias = alunos[j].getElementsByTagName("materia");
+            
+            const alunoItem = document.createElement("li");
+            alunoItem.innerHTML = `${alunoNome} (${genero})`;
+            
+            const materiasArray = Array.from(materias);
+            materiasArray.sort((a, b) => a.getAttribute("nome").localeCompare(b.getAttribute("nome")));
+            
+            const materiaList = document.createElement("ul");
+            materiasArray.forEach(materia => {
+                const materiaItem = document.createElement("li");
+                materiaItem.innerText = `${materia.getAttribute("nome")}: ${materia.textContent}`;
+                materiaList.appendChild(materiaItem);
+            });
+            alunoItem.appendChild(materiaList);
+            listaAlunos.appendChild(alunoItem);
+        }
+
+        cursoDiv.appendChild(listaAlunos);
+        listaAlunosDiv.appendChild(cursoDiv);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    carregarXML();
+});
+
+function calcularNotas(event) {
+    event.preventDefault();
+
+    const nomeAluno = document.getElementById("nomeAluno").value;
+    const nota1 = parseFloat(document.getElementById("nota1").value);
+    const nota2 = parseFloat(document.getElementById("nota2").value);
+    const nota3 = parseFloat(document.getElementById("nota3").value);
+    const nota4 = parseFloat(document.getElementById("nota4").value);
+
+    if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4)) {
+        alert("Por favor, insira todas as notas corretamente.");
+        return;
+    }
+
+    const media = (nota1 + nota2 + nota3 + nota4) / 4;
+    let situacao = "";
+    let cor = "";
+
+    if (media >= 7) {
+        situacao = "Aprovado";
+        cor = "blue";
+    } else if (media >= 4) {
+        situacao = "Recuperação";
+        cor = "yellow";
+    } else {
+        situacao = "Reprovado";
+        cor = "red";
+    }
+
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML = `
+        <p>Aluno: ${nomeAluno}</p>
+        <p>Média: ${media.toFixed(2)}</p>
+        <p style="color: ${cor};">Situação: ${situacao}</p>
+    `;
+}
+
+
+document.getElementById("notasForm").addEventListener("submit", calcularNotas);
