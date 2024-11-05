@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dados>
+    <cursos>
+        <curso nome="Curso de Informática">
+            <alunos>
+                <aluno>
+                    <nome>Ana Silva</nome>
+                    <genero>F</genero>
+                    <materias>
+                        <materia nome="Matemática">8</materia>
+                        <materia nome="Português">7</materia>
+                        <materia nome="Algoritmos">9</materia>
+                        <materia nome="Banco de Dados">8</materia>
+                        <materia nome="Redes">7</materia>
+                    </materias>
+                </aluno>
+            </alunos>
+        </curso>
+
+        <curso nome="Curso de Engenharia">
+            <alunos>
+                <aluno>
+                    <nome>João Oliveira</nome>
+                    <genero>M</genero>
+                    <materias>
+                        <materia nome="Matemática">6</materia>
+                        <materia nome="Português">7</materia>
+                        <materia nome="Física">9</materia>
+                        <materia nome="Química">6</materia>
+                        <materia nome="Cálculo">8</materia>
+                    </materias>
+                </aluno>
+            </alunos>
+        </curso>
+    </cursos>
+</dados>
