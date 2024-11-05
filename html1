@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Alunos</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="lista_alunos.html">Lista de Alunos</a></li>
+                <li><a href="notas.html">Inserir Notas</a></li>
+                <li><a href="media_sala.html">Média da Sala</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Bem-vindo à Gestão de Alunos</h1>
+        <p>Escolha uma das opções no menu para continuar.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gestão de Alunos - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
